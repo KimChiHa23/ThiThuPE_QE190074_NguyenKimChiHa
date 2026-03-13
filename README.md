@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Create a frontend web application for managing a personal list of study resources.
 
-## Getting Started
+Requirements:
 
-First, run the development server:
+1. Technology
+- Use React or Next.js
+- Use Tailwind CSS
+- Use Shadcn UI components
+- Use Supabase for backend services (Supabase Auth and Supabase Database API)
+- Use Supabase Storage for image upload
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Public Home Page
+Create a public page that displays a list of all study resources added by all users.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Each resource must display:
+- Title (required)
+- Link/URL (required)
+- Category (optional, e.g., Next.js, AI, UI/UX)
+- Image thumbnail (uploaded by users)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use Shadcn UI components such as Cards and Badges to display each resource.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Authentication (Supabase Auth)
+Implement authentication using Supabase Auth.
 
-## Learn More
+Features:
+- User registration with email and password
+- User login with email and password
+- Logout button in the navigation/header
+- Protected routes so only authenticated users can access the dashboard
 
-To learn more about Next.js, take a look at the following resources:
+Unauthenticated users trying to access protected pages should be redirected to the login page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Resource Management (CRUD using Supabase API)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Authenticated users can manage their own resources.
 
-## Deploy on Vercel
+Create Resource:
+- Users can add a resource with:
+  - Title
+  - Link
+  - Category
+  - Uploaded Image
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Edit Resource:
+- Users can edit their own resource (title, link, category, image).
+- After saving, redirect back to the resource list.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Delete Resource:
+- Users can delete their own resource.
+- Show a confirmation dialog before deleting (use Shadcn AlertDialog).
+
+5. Database Structure
+
+Create a table called "resources" with fields:
+- id
+- title
+- link
+- category
+- image_url
+- user_id
+- created_at
+
+Each resource must belong to the user who created it.
+
+6. UI Pages
+
+The app should include these pages:
+
+- Home page (public resource list)
+- Register page
+- Login page
+- Dashboard page (user's resources)
+- Add Resource page
+- Edit Resource page
+
+7. Image Upload
+
+Implement image upload using Supabase Storage and display the uploaded image as a thumbnail for each resource.
+
+8. Deployment
+
+The project should:
+- Be pushed to a public GitHub repository
+- Be deployed online (Vercel or Netlify)
+
+Generate a clean project structure and example code for all main features.
